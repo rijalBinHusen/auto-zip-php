@@ -1,9 +1,19 @@
 <?php
 
+$black_list_to_not_show = array(".", "..", ".git");
+
 $dir = "./";
 $directories = array();
 foreach (scandir($dir) as $file) {
-  if (is_dir($dir . "/" . $file)) {
+  $is_on_black_list = in_array($file, $black_list_to_not_show);
+
+  if($is_on_black_list) {
+  
+    continue;
+
+  }
+
+  else if (is_dir($dir . "/" . $file)) {
     // $directories[] = $file;
     echo $file . "\n";
 
