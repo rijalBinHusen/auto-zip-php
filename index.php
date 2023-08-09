@@ -1,12 +1,31 @@
 <?php
 
 $dir = "./";
-$files = scandir($dir);
-foreach ($files as $file) {
-  if (!is_dir($dir . "/" . $file)) {
+$directories = array();
+foreach (scandir($dir) as $file) {
+  if (is_dir($dir . "/" . $file)) {
+    // $directories[] = $file;
     echo $file . "\n";
+
+  } else {
+
+    echo $file . "\n";
+    
   }
 }
+
+// foreach ($directories as $directory) {
+//   echo $directory . "\n";
+// }
+
+
+// $dir = "./";
+// $files = scandir($dir);
+// foreach ($files as $file) {
+//   if (!is_dir($dir . "/" . $file)) {
+//     echo $file . "\n";
+//   }
+// }
 
 // error_reporting(E_ALL);
 // ini_set('display_errors', 1);
