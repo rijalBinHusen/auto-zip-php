@@ -1,14 +1,12 @@
 <?php
 
-// $dir = "./";
-// $files = scandir($dir);
-// foreach ($files as $file) {
-//   if (!is_dir($dir . "/" . $file)) {
-//     echo $file . "\n";
-//   }
-// }
-
-echo "hello world!\n"
+$dir = "./";
+$files = scandir($dir);
+foreach ($files as $file) {
+  if (!is_dir($dir . "/" . $file)) {
+    echo $file . "\n";
+  }
+}
 
 // error_reporting(E_ALL);
 // ini_set('display_errors', 1);
