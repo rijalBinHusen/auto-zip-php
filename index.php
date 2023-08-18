@@ -3,7 +3,6 @@
 
 function getDirContents($dir, &$results = array()) {
     $black_list_to_not_zip = array(".", "..", ".git");
-    // // this should be contain date now and time
 
     $files = scandir($dir);
 
@@ -14,14 +13,12 @@ function getDirContents($dir, &$results = array()) {
         
         if (!is_dir($location)) {
 
-          
           $results[] = $location;
-        } else if ($is_on_black_list === false) {
+        } 
+        else if ($is_on_black_list === false) {
 
           $results[] = $location;
           getDirContents($location, $results);
-          // $results[] = $location;
-
         }
     }
 
@@ -35,7 +32,6 @@ function zip_all_file_and_folder () {
 
   $zip_archive = new ZipArchive;
 
-  // this should be contain date now and time
   $zip_file_name = "Ready_to_deploy.zip";
 
   $zip_archive_open = $zip_archive->open($zip_file_name, (ZipArchive::CREATE | ZipArchive::OVERWRITE));
