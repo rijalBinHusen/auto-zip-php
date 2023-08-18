@@ -11,7 +11,7 @@ function getDirContents($dir, &$results = array()) {
 
         $location = $dir . "/" . $file;
         
-        if (!is_dir($location)) {
+        if (!is_dir($location) && $is_on_black_list === false) {
 
           $results[] = $location;
         } 
@@ -47,7 +47,9 @@ function zip_all_file_and_folder () {
       $zip_archive->addEmptyDir($location);
     } else {
 
-      $zip_archive->addGlob($location);
+      $real_path = realpath($location);
+      // real path of file location, the filename inside zip file
+      $zip_archive->addFile($real_path, $location);
     }
 
     $is_failed_to_zip = $zip_archive->status != ZipArchive::ER_OK;
@@ -56,6 +58,8 @@ function zip_all_file_and_folder () {
       echo "Failed to write " . $location . " files to zip\n";
     }
   }
+
+  echo "All files and folders zipped on $zip_file_name\n";
 
   $zip_archive->close();
 }
